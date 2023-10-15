@@ -40,34 +40,36 @@ local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
     local map = vim.api.nvim_buf_set_keymap
     --  if exists("lspsaga.nvim") then
-    map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+    -- map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
     map(bufnr, "n", "gh", "<cmd>Lspsaga hover_doc ++keep<cr>", opts)
     --
-    map(bufnr, "n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
+    -- map(bufnr, "n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
     --
-    map(bufnr, "n", "gpd", "<cmd>Lspsaga peek_definition<cr>", opts)
-    map(bufnr, "n", "gptd", "<cmd>Lspsaga peek_type_definition<cr>", opts)
+    -- map(bufnr, "n", "gpd", "<cmd>Lspsaga peek_definition<cr>", opts)
+    -- map(bufnr, "n", "gptd", "<cmd>Lspsaga peek_type_definition<cr>", opts)
     -- map(bufnr, "n", "ggtd", "<cmd>Lspsaga goto_type_definition<cr>", opts)
     --
-    map(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+    -- map(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
     --
-    map(bufnr, "n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
-    map(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
-    --
+    -- map(bufnr, "n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
+    -- map(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
+
     map(bufnr, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
     map(bufnr, "n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
     -- else
-    -- map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-    -- map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    -- map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    -- map(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    -- map(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float({border = 'single'})<CR>", opts)
-    -- map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+    map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    --
+    map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    --
+    map(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+    map(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>", opts)
+    map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
 
     -- map(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({async=true})<cr>", opts)
     -- map(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    -- map(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-    -- map(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+    -- map(bufnr, "n", "<leader>gj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+    -- map(bufnr, "n", "<leader>gk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
     -- map(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     -- map(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     -- map(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
@@ -96,7 +98,7 @@ for _, sign in ipairs(diag_signs) do
 end
 
 local diag_config = {
-    virtual_text = { enabled = true, spacing = "20", prefix = "▰" },
+    virtual_text = { enabled = true, spacing = "16" },
     signs = {
         active = diag_signs,
     },
@@ -128,7 +130,6 @@ end
 -- servers config
 lspconfig["zls"].setup({})
 lspconfig["gopls"].setup({})
-lspconfig["jdtls"].setup({})
 lspconfig["crystalline"].setup({})
 lspconfig["julials"].setup({})
 lspconfig["vls"].setup({})

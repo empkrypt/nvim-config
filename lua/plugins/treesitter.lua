@@ -7,6 +7,7 @@ treesitter.setup({
         "cpp",
         "lua",
         "rust",
+        "java",
         "markdown",
         "markdown_inline",
     },                     -- one of "all" or a list of languages
@@ -31,7 +32,7 @@ treesitter.setup({
         disable = { "xml", "markdown" },
     },
     rainbow = {
-        enable = true,
+        enable = false,
         extended_mode = false,
         -- colors = {
         --   "#68a0b0",

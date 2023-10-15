@@ -28,7 +28,7 @@ local lsp_info = function(msg)
     msg = msg or "LS INACTIVE"
     local buf_clients = vim.lsp.buf_get_clients()
     if next(buf_clients) == nil then
-        if type(msg) == "boolean" or #msg == 0 then return "[LSP OFFLINE]" end
+        if type(msg) == "boolean" or #msg == 0 then return "LSP OFFLINE" end
         return msg
     end
     local buf_client_names = {}
@@ -54,7 +54,7 @@ local lsp_info = function(msg)
     if f ~= nil then vim.list_extend(buf_client_names, f) end
     if linter ~= nil then vim.list_extend(buf_client_names, linter) end
 
-    return "[" .. table.concat(buf_client_names, ", ") .. "]"
+    return "" .. table.concat(buf_client_names, ", ") .. ""
     -- return "LSP ON"
 end
 
@@ -72,7 +72,7 @@ end
 local colors = {
     blue = "#4f88bf",
     cyan = "#4f897a",
-    black = "#0E0E0E",
+    black = "#000000",
     white = "#ebebeb",
     red = "#bf4f57",
     violet = "#b334b0",
@@ -82,58 +82,57 @@ local colors = {
     orange = "#c05e48",
     orange2 = "#a84b1f",
     transparent = "NONE",
-    dark = "#0f1114",
     fg = "#bfbfbf",
 }
 
 local theme = {
     normal = {
         a = { fg = colors.black, bg = colors.red },
-        b = { fg = colors.white, bg = colors.black },
-        c = { fg = colors.white, bg = colors.black },
-        x = { fg = colors.white, bg = colors.black },
-        y = { fg = colors.white, bg = colors.black },
-        z = { fg = colors.white, bg = colors.black },
+        b = { fg = colors.white, bg = colors.transparent },
+        c = { fg = colors.white, bg = colors.transparent },
+        x = { fg = colors.white, bg = colors.transparent },
+        y = { fg = colors.white, bg = colors.transparent },
+        z = { fg = colors.white, bg = colors.transparent },
     },
     insert = {
         a = { fg = colors.black, bg = colors.green },
-        b = { fg = colors.fg, bg = colors.black },
-        c = { fg = colors.fg, bg = colors.black },
-        x = { fg = colors.fg, bg = colors.black },
-        y = { fg = colors.fg, bg = colors.black },
-        z = { fg = colors.fg, bg = colors.black },
+        b = { fg = colors.fg, bg = colors.transparent },
+        c = { fg = colors.fg, bg = colors.transparent },
+        x = { fg = colors.fg, bg = colors.transparent },
+        y = { fg = colors.fg, bg = colors.transparent },
+        z = { fg = colors.fg, bg = colors.transparent },
     },
     visual = {
         a = { fg = colors.black, bg = colors.blue },
-        b = { fg = colors.fg, bg = colors.black },
-        c = { fg = colors.fg, bg = colors.black },
-        x = { fg = colors.fg, bg = colors.black },
-        y = { fg = colors.fg, bg = colors.black },
-        z = { fg = colors.fg, bg = colors.black },
+        b = { fg = colors.fg, bg = colors.transparent },
+        c = { fg = colors.fg, bg = colors.transparent },
+        x = { fg = colors.fg, bg = colors.transparent },
+        y = { fg = colors.fg, bg = colors.transparent },
+        z = { fg = colors.fg, bg = colors.transparent },
     },
     command = {
         a = { fg = colors.white, bg = colors.black },
-        b = { fg = colors.fg, bg = colors.black },
-        c = { fg = colors.fg, bg = colors.black },
-        x = { fg = colors.fg, bg = colors.black },
-        y = { fg = colors.fg, bg = colors.black },
-        z = { fg = colors.fg, bg = colors.black },
+        b = { fg = colors.fg, bg = colors.transparent },
+        c = { fg = colors.fg, bg = colors.transparent },
+        x = { fg = colors.fg, bg = colors.transparent },
+        y = { fg = colors.fg, bg = colors.transparent },
+        z = { fg = colors.fg, bg = colors.transparent },
     },
     terminal = {
-        a = { fg = colors.white, bg = colors.black },
-        b = { fg = colors.fg, bg = colors.black },
-        c = { fg = colors.fg, bg = colors.black },
-        x = { fg = colors.fg, bg = colors.black },
-        y = { fg = colors.fg, bg = colors.black },
-        z = { fg = colors.fg, bg = colors.black },
+        a = { fg = colors.white, bg = colors.transparent },
+        b = { fg = colors.fg, bg = colors.transparent },
+        c = { fg = colors.fg, bg = colors.transparent },
+        x = { fg = colors.fg, bg = colors.transparent },
+        y = { fg = colors.fg, bg = colors.transparent },
+        z = { fg = colors.fg, bg = colors.transparent },
     },
     inactive = {
-        a = { fg = colors.white, bg = colors.black },
-        b = { fg = colors.fg, bg = colors.black },
-        c = { fg = colors.fg, bg = colors.black },
-        x = { fg = colors.fg, bg = colors.black },
-        y = { fg = colors.fg, bg = colors.black },
-        z = { fg = colors.fg, bg = colors.black },
+        a = { fg = colors.white, bg = colors.transparent },
+        b = { fg = colors.fg, bg = colors.transparent },
+        c = { fg = colors.fg, bg = colors.transparent },
+        x = { fg = colors.fg, bg = colors.transparent },
+        y = { fg = colors.fg, bg = colors.transparent },
+        z = { fg = colors.fg, bg = colors.transparent },
     },
 }
 
@@ -180,9 +179,9 @@ local filename = {
 local branch = {
     "branch",
     icons_enabled = true,
-    separator = { left = " ", right = "" },
     colored = true,
-    color = { fg = colors.blue, bold = true },
+    separator = { left = '', right = ''},
+    color = { fg = colors.blue },
 }
 
 local mode = {
@@ -235,6 +234,29 @@ local separator = {
     end,
 }
 
+local sep_l = {
+    function ()
+        return "["
+    end,
+    padding = 0,
+    color = { fg = colors.red },
+}
+local sep_r = {
+    function ()
+        return "]"
+    end,
+    padding = 0,
+    color = { fg = colors.red }
+}
+
+local sep = {
+    function ()
+        return "|"
+    end,
+    padding = 0,
+    color = { fg = "#343434" }
+}
+
 lualine.setup({
     options = {
         icons_enabled = true,
@@ -266,10 +288,10 @@ lualine.setup({
     },
     sections = {
         lualine_a = { mode },
-        lualine_b = { branch, diff },
-        lualine_c = { separator, location, filename },
-        lualine_x = { pyvenv, filetype, lsp_info, diagnostics },
-        lualine_y = { tab_size, encoding, fileformat },
+        lualine_b = { location, sep, filename, sep_l, branch, diff, sep_r, sep},
+        lualine_c = {},
+        lualine_x = { sep,pyvenv, sep_l, filetype, lsp_info, sep_r, sep, sep ,sep_l, diagnostics, sep_r, sep, sep },
+        lualine_y = { sep_l, tab_size, encoding, fileformat, sep_r, sep, sep },
         lualine_z = { progress },
     },
     inactive_sections = {

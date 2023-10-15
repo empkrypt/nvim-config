@@ -34,7 +34,7 @@ vim.opt.wrap = false           -- display lines as one long line
 vim.opt.linebreak = false      -- companion to wrap, don't split words
 vim.opt.splitbelow = true      -- force all horizontal splits to go below current window
 vim.opt.splitright = true      -- force all vertical splits to go to the right of current window
-vim.opt.cursorline = false      -- highlight current line
+vim.opt.cursorline = true      -- highlight current line
 vim.opt.cursorcolumn = false   -- highlight current column
 vim.opt.hlsearch = true        -- highlight all matches on previous search pattern
 vim.opt.signcolumn = "yes"     -- always show the sign column, otherwise it would shift the text each time
@@ -74,3 +74,17 @@ vim.opt.foldenable = true
 vim.opt.shortmess:append("c", "sI")
 vim.opt.whichwrap:append("<,>,[,],b,s")
 vim.opt.iskeyword:append("-")
+--
+vim.cmd([[
+set guicursor=n-v-c:block-Cursor/lCursor
+            \,i-ci-ve:ver100-iCursor
+            \,r-cr:block-rCursor
+            \,o:hor50-Cursor/lCursor
+            \,sm:block-iCursor
+            \,a:blinkwait1000-blinkon500-blinkoff250
+highlight Cursor guibg=red guifg=black
+highlight lCursor guibg=red guifg=black
+highlight iCursor guibg=green guifg=NONE
+]])
+
+

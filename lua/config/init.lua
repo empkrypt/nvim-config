@@ -19,7 +19,7 @@ local plugs = {
         "j-hui/fidget.nvim",
         tag = "legacy",
         event = "LspAttach",
-        config = function ()
+        config = function()
             require("fidget").setup()
         end
     },
@@ -106,7 +106,7 @@ local plugs = {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
+        main = "ibl",
         config = function()
             require("plugins.indentline")
         end,
@@ -134,19 +134,35 @@ local plugs = {
     },
     {
         "loctvl842/monokai-pro.nvim",
-        event = "VimEnter",
-        priority = 10000,
+        -- event = "VimEnter",
+        -- priority = 10000,
         lazy = false,
         config = function()
             require("plugins.monokai")
         end,
     },
     {
+        "marko-cerovac/material.nvim",
+        -- event = "VimEnter",
+        -- priority = 10000,
+        config = function()
+            require("plugins.material")
+        end
+    },
+    {
         "olimorris/onedarkpro.nvim",
+        event = "VimEnter",
+        priority = 1000,
         lazy = false,
         config = function()
             require("plugins.onedark")
         end,
+    },
+    {
+        "folke/tokyonight.nvim",
+        config = function()
+            require("plugins.tokyonight")
+        end
     },
     {
         "EdenEast/nightfox.nvim",
@@ -244,6 +260,7 @@ local plugs = {
     },
     {
         "lewis6991/gitsigns.nvim",
+        event = "BufRead",
         config = function()
             require("plugins.gitsigns")
         end,
@@ -284,9 +301,9 @@ local plugs = {
     { "ollykel/v-vim" },
     { "alaviss/nim.nvim" },
     { "vim-crystal/vim-crystal" },
+    { "mfussenegger/nvim-jdtls", ft = "java" }
     --
 }
-
 
 require("lazy").setup(plugs, {
     change_detection = {
@@ -303,4 +320,4 @@ for _, opts in ipairs(config_options) do
     end
 end
 
-vim.cmd("colorscheme monokai-pro")
+vim.cmd("colorscheme tokyonight")

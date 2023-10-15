@@ -6,12 +6,12 @@ onedark.setup({
         types = "bold",  -- Style that is applied to types
         methods = "NONE", -- Style that is applied to methods
         numbers = "NONE", -- Style that is applied to numbers
-        strings = "NONE", -- Style that is applied to strings
-        comments = "NONE", -- Style that is applied to comments
+        strings = "italic", -- Style that is applied to strings
+        comments = "italic", -- Style that is applied to comments
         keywords = "NONE", -- Style that is applied to keywords
         constants = "NONE", -- Style that is applied to constants
         functions = "NONE", -- Style that is applied to functions
-        operators = "NONE", -- Style that is applied to operators
+        operators = "bold", -- Style that is applied to operators
         variables = "NONE", -- Style that is applied to variables
         parameters = "NONE", -- Style that is applied to parameters
         conditionals = "NONE", -- Style that is applied to conditionals
@@ -80,11 +80,9 @@ onedark.setup({
         highlight_inactive_windows = false, -- When the window is out of focus, change the normal background?
     },
     highlights = {
-        -- ["@variable"] = { fg = "white"},
-        ["@string"] = { link = "String" },
+        ["@variable"] = { fg = "#FFFFFF"},
         -- Conditional = {},
         CursorLineNr = { fg = "#e06c75", bg = "NONE" },
-        --
         --
         TelescopeNormal = { bg = "#111111", fg = "#8597a2", },
         TelescopeBorder = { bg = "#111111", fg = "#111111", },
@@ -93,32 +91,5 @@ onedark.setup({
         TelescopePromptTitle = { bg = "#383838", fg = "#383838", },
         TelescopePreviewTitle = { bg = "#181818", fg = "#111111", },
         TelescopeResultsTitle = { bg = "#181818", fg = "#111111", },
-        --
-        BufferLineBufferVisible = { fg = "#515151", bg = "#181818" },
-        BufferLineBufferSelected = { bg = "#181818", style = "bold" },
-        BufferLineCloseButton = { fg = "#515151", bg = "#181818" },
-        BufferLineBackground = { fg = "#515151", bg = "#181818" },
-        BufferLineCloseButtonSelected = { bg = "#181818" },
-        BufferLineCloseButtonVisible = { bg = "#181818" },
-        --
-        BufferLineSeparator = { fg = "#121212", bg = "#181818" },
-        BufferLineSeparatorVisible = { fg = "#121212", bg = "#181818" },
-        BufferLineSeparatorSelected = { fg = "#121212", bg = "#181818" },
-        BufferLineOffsetSeparator = { fg = "#181818", bg = "#181818" },
-        -- --
-        BufferLineIndicatorSelected = { fg = "#181818", bg = "#181818" },
-        BufferLineIndicatorVisible = { fg = "#181818", bg = "#181818" },
-        BufferLineFill = { bg = "#212121" },
-        --
-        BufferLineTab = { fg = "#515151", bg = "#181818" },
-        BufferLineTabClose = { fg = "#515151", bg = "#181818" },
-        BufferLineTabSeparator = { fg = "#121212", bg = "#181818" },
-        BufferLineTabSeparatorSelected = { fg = "#121212", bg = "#212121" },
-        BufferLineTabSelected = { bg = "#212121" },
-        --
-        BufferLineModified = { fg = "green", bg = "#181818" },
-        BufferLineModifiedVisible = { link = "BufferLineModified" },
-        BufferLineModifiedSelected = { link = "BufferLineModified" },
-
     },
 })

@@ -29,7 +29,7 @@ nightfox.setup({
             keywords = "NONE",
             numbers = "NONE",
             operators = "NONE",
-            strings = "NONE",
+            strings = "italic",
             types = "bold",
             variables = "NONE",
         },
@@ -98,14 +98,14 @@ nightfox.setup({
                 -- preproc = "orange.base", -- PreProc
                 -- regex = "green.bright", -- Regex
                 -- statement = "magenta.base", -- Statements
-                string = "#f9cc6c", -- Strings
-                type = "blue.bright", -- Types
+                -- string = "#f9cc6c", -- Strings
+                -- type = "blue.bright", -- Types
                 -- variable    = pal.white.base,   -- Variables
             },
         },
         terafox = {
             syntax = {
-                string = "#f9cc6c", -- Strings
+                -- string = "#f9cc6c", -- Strings
             }
         }
 
@@ -140,24 +140,14 @@ nightfox.setup({
             NormalFloat = { bg = "#0f1114" },
             FloatBorder = { bg = "#0f1114", fg = "#0f1114" },
             --
-
-            TabLine = { fg = "palette.fg1", bg = "#141414" },
-            TabLineFill = { fg = "palette.fg1", bg = "#141414" },
-            TabLineSel = { fg = "palette.fg1", bg = "#141414", style = "bold" },
-            --
             -- MatchParen = { style = "bold,underline", fg = "#c94f6d", bg = "#000000" },
             --
             DiagnosticVirtualTextError = { bg = "NONE", style = "bold" },
             DiagnosticVirtualTextWarn = { bg = "NONE", style = "bold" },
             DiagnosticVirtualTextInfo = { bg = "NONE", style = "bold" },
             DiagnosticVirtualTextHint = { bg = "NONE", style = "bold" },
-            -- DiganosticLineError = {},
-            -- DiganosticLineWarn = {},
-            -- DiganosticLineInfo = {},
-            -- DiganosticLineHint = {},
             --
             -- Whitespace = { link = "Comment" },
-            --
             --
             HopNextKey = { fg = "palette.red", style = "bold" },
             HopNextKey1 = { fg = "palette.blue", style = "bold" },
@@ -175,33 +165,6 @@ nightfox.setup({
             TelescopePromptTitle = { bg = "#383838", fg = "#383838", },
             TelescopePreviewTitle = { bg = "#181818", fg = "#111111", },
             TelescopeResultsTitle = { bg = "#181818", fg = "#111111", },
-
-            --
-            BufferLineBufferVisible = { fg = "#515151", bg = "#181818" },
-            BufferLineBufferSelected = { bg = "#181818", style = "bold" },
-            BufferLineCloseButton = { fg = "#515151", bg = "#181818" },
-            BufferLineBackground = { fg = "#515151", bg = "#181818" },
-            BufferLineCloseButtonSelected = { bg = "#181818" },
-            BufferLineCloseButtonVisible = { bg = "#181818" },
-            --
-            BufferLineSeparator = { fg = "#121212", bg = "#181818" },
-            BufferLineSeparatorVisible = { fg = "#121212", bg = "#181818" },
-            BufferLineSeparatorSelected = { fg = "#121212", bg = "#181818" },
-            BufferLineOffsetSeparator = { fg = "#181818", bg = "#181818" },
-            -- --
-            BufferLineIndicatorSelected = { fg = "#181818", bg = "#181818" },
-            BufferLineIndicatorVisible = { fg = "#181818", bg = "#181818" },
-            BufferLineFill = { bg = "#212121" },
-            --
-            BufferLineTab = { fg = "#515151", bg = "#181818" },
-            BufferLineTabClose = { fg = "#515151", bg = "#181818" },
-            BufferLineTabSeparator = { fg = "#121212", bg = "#181818" },
-            BufferLineTabSeparatorSelected = { fg = "#121212", bg = "#212121" },
-            BufferLineTabSelected = { bg = "#212121" },
-            --
-            BufferLineModified = { fg = "green", bg = "#181818" },
-            BufferLineModifiedVisible = { link = "BufferLineModified" },
-            BufferLineModifiedSelected = { link = "BufferLineModified" },
             --
             WhichKeyFloat = { link = "NormalFloat" },
             --
@@ -211,7 +174,7 @@ nightfox.setup({
             -- NvimTreeNormal = { bg = "palette.bg1" },
             -- NeoTreeNormal = { bg = "palette.bg1" },
             --
-            -- ["@variable"] = { fg = "#bfbfbf" },
+            ["@variable"] = { fg = "#FFFFFF" },
             -- ["@punctuation.delimiter"] = { fg = "#59636b" },
             -- ["@punctuation.bracket"] = { fg = "#8d939e" },
             -- ["@keyword.operator"] = { fg = "palette.red.dim" },
