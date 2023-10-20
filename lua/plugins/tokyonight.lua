@@ -43,6 +43,11 @@ tk.setup({
             bg = c.bg_dark,
             fg = c.bg_dark,
         }
+        ---
+        hl.DiagnosticLineError = { bg = "#2d202a" }
+        hl.DiagnosticLineWarn = { bg = "#2e2a2d" }
+        hl.DiagnosticLineInfo = { bg = "#192b38" }
+        hl.DiagnosticLineHint = { bg = "#1a2b32" }
     end,
 
 })
