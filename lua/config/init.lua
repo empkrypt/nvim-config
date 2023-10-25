@@ -301,8 +301,7 @@ local plugs = {
     { "ollykel/v-vim" },
     { "alaviss/nim.nvim" },
     { "vim-crystal/vim-crystal" },
-    { "mfussenegger/nvim-jdtls", ft = "java" }
-    --
+    { "mfussenegger/nvim-jdtls", ft = "java" },
 }
 
 require("lazy").setup(plugs, {

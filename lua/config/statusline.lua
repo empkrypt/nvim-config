@@ -180,7 +180,7 @@ local branch = {
     "branch",
     icons_enabled = true,
     colored = true,
-    separator = { left = '', right = ''},
+    separator = { left = '', right = '' },
     color = { fg = colors.blue },
 }
 
@@ -235,14 +235,14 @@ local separator = {
 }
 
 local sep_l = {
-    function ()
+    function()
         return "["
     end,
     padding = 0,
     color = { fg = colors.red },
 }
 local sep_r = {
-    function ()
+    function()
         return "]"
     end,
     padding = 0,
@@ -250,7 +250,7 @@ local sep_r = {
 }
 
 local sep = {
-    function ()
+    function()
         return "|"
     end,
     padding = 0,
@@ -288,10 +288,10 @@ lualine.setup({
     },
     sections = {
         lualine_a = { mode },
-        lualine_b = { location, sep, filename, sep_l, branch, diff, sep_r, sep},
+        lualine_b = { location, filename, sep_l, branch, diff, sep_r, sep },
         lualine_c = {},
-        lualine_x = { sep,pyvenv, sep_l, filetype, lsp_info, sep_r, sep, sep ,sep_l, diagnostics, sep_r, sep, sep },
-        lualine_y = { sep_l, tab_size, encoding, fileformat, sep_r, sep, sep },
+        lualine_x = { sep, pyvenv, sep_l, filetype, lsp_info, sep_r, sep_l, diagnostics, sep_r, },
+        lualine_y = { sep_l, tab_size, sep, encoding, fileformat, sep_r, },
         lualine_z = { progress },
     },
     inactive_sections = {
