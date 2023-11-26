@@ -5,7 +5,7 @@ vim.opt.mouse = "a"                                       -- allow the mouse
 vim.opt.clipboard = "unnamedplus"                         -- allows neovim to access the system clipboard
 vim.opt.swapfile = false                                  -- don't use swapfile
 vim.opt.termguicolors = true                              -- enable 24-bit colors
-vim.opt.scrolloff = 2                                     -- minimal number of screen lines to keep above and below the cursor
+vim.opt.scrolloff = 6                                     -- minimal number of screen lines to keep above and below the cursor
 vim.opt.sidescrolloff = 7                                 -- minimal number of screen columns either side of cursor if wrap is `false`
 vim.opt.grepprg = "rg --vimgrep --smartcase --no-heading" -- search with rg
 vim.opt.grepformat = "%f:%l:%c:%m"                        -- filename:line number:column number:error message
@@ -28,7 +28,7 @@ vim.opt.foldmethod = "marker"  -- Enable folding
 vim.opt.ignorecase = true      -- ignore case letter when search
 vim.opt.smartcase = true       -- ignore lowercase
 vim.opt.laststatus = 3         -- Global statusline
-vim.opt.showtabline = 1        -- disable tabline
+vim.opt.showtabline = 2        -- disable tabline
 vim.opt.showmode = false
 vim.opt.wrap = false           -- display lines as one long line
 vim.opt.linebreak = false      -- companion to wrap, don't split words
@@ -75,16 +75,7 @@ vim.opt.shortmess:append("c", "sI")
 vim.opt.whichwrap:append("<,>,[,],b,s")
 vim.opt.iskeyword:append("-")
 --
+
 vim.cmd([[
-set guicursor=n-v-c:block-Cursor/lCursor
-            \,i-ci-ve:ver100-iCursor
-            \,r-cr:block-rCursor
-            \,o:hor50-Cursor/lCursor
-            \,sm:block-iCursor
-            \,a:blinkwait1000-blinkon500-blinkoff250
-highlight Cursor guibg=red guifg=black
-highlight lCursor guibg=red guifg=black
-highlight iCursor guibg=green guifg=NONE
+    set guicursor+=a:blinkwait1000-blinkon500-blinkoff250
 ]])
-
-

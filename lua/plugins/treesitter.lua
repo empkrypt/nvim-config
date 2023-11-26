@@ -23,10 +23,10 @@ treesitter.setup({
         enable = true,
     },
     -- indent = { enable = false, disable = { "python", "rust", "lua" } },
-    context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-    },
+    -- context_commentstring = {
+    --     enable = true,
+    --     enable_autocmd = false,
+    -- },
     autotag = {
         enable = true,
         disable = { "xml", "markdown" },
@@ -86,3 +86,9 @@ treesitter.setup({
         },
     },
 })
+
+
+require("ts_context_commentstring").setup( { } )
+vim.g.skip_ts_context_commentstring_module = true
+
+

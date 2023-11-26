@@ -6,7 +6,7 @@ onedark.setup({
         types = "bold",  -- Style that is applied to types
         methods = "NONE", -- Style that is applied to methods
         numbers = "NONE", -- Style that is applied to numbers
-        strings = "italic", -- Style that is applied to strings
+        strings = "NONE", -- Style that is applied to strings
         comments = "italic", -- Style that is applied to comments
         keywords = "NONE", -- Style that is applied to keywords
         constants = "NONE", -- Style that is applied to constants
@@ -15,7 +15,7 @@ onedark.setup({
         variables = "NONE", -- Style that is applied to variables
         parameters = "NONE", -- Style that is applied to parameters
         conditionals = "NONE", -- Style that is applied to conditionals
-        virtual_text = "NONE", -- Style that is applied to virtual text
+        virtual_text = "italic", -- Style that is applied to virtual text
     },
     filetypes = {        -- Override which filetype highlight groups are loaded
         comment = true,
@@ -82,7 +82,8 @@ onedark.setup({
     highlights = {
         ["@variable"] = { fg = "#FFFFFF"},
         -- Conditional = {},
-        CursorLineNr = { fg = "#e06c75", bg = "NONE" },
+        -- CursorLineNr = { fg = "#e06c75", bg = "NONE" },
+        CursorLine = { bg = "#181818" },
         --
         TelescopeNormal = { bg = "#111111", fg = "#8597a2", },
         TelescopeBorder = { bg = "#111111", fg = "#111111", },

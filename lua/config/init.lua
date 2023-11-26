@@ -27,7 +27,7 @@ local plugs = {
         "declancm/cinnamon.nvim",
         config = function()
             require("plugins.cinnamon")
-        end
+        end,
     },
     {
         event = "VimEnter",
@@ -79,11 +79,24 @@ local plugs = {
             require("plugins.nvim-tree")
         end,
     },
+    -- {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     event = "VimEnter",
+    --     config = function ()
+    --         require("plugins.neotree")
+    --     end
+    -- },
+    -- {
+    --     "akinsho/bufferline.nvim",
+    --     config = function()
+    --         require("plugins.bufferline")
+    --     end,
+    -- },
     {
-        "akinsho/bufferline.nvim",
+        "romgrk/barbar.nvim",
         config = function()
-            require("plugins.bufferline")
-        end,
+            require("plugins.barbar")
+        end
     },
     {
         "tiagovla/scope.nvim",
@@ -110,6 +123,7 @@ local plugs = {
         config = function()
             require("plugins.indentline")
         end,
+        -- enabled = false,
     },
     {
         "goolord/alpha-nvim",
@@ -151,8 +165,8 @@ local plugs = {
     },
     {
         "olimorris/onedarkpro.nvim",
-        event = "VimEnter",
-        priority = 1000,
+        -- event = "VimEnter",
+        -- priority = 1000,
         lazy = false,
         config = function()
             require("plugins.onedark")
@@ -165,6 +179,7 @@ local plugs = {
         end
     },
     {
+
         "EdenEast/nightfox.nvim",
         -- event = "VimEnter",
         -- priority = 10000,
@@ -188,25 +203,29 @@ local plugs = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             {
-                "jose-elias-alvarez/null-ls.nvim",
+                "nvimtools/none-ls.nvim",
                 config = function()
                     require("plugins.null-ls")
                 end
             },
+            -- {
+            --     "RRethy/vim-illuminate",
+            --     event = "BufReadPost",
+            --     config = function()
+            --         require("illuminate").configure({
+            --             providers = {
+            --                 "treesitter",
+            --                 "lsp",
+            --             },
+            --             under_cursor = false,
+            --         })
+            --     end,
+            -- },
             {
-                "RRethy/vim-illuminate",
-                event = "BufReadPost",
-                config = function()
-                    require("illuminate").configure({
-                        providers = {
-                            "treesitter",
-                            "lsp",
-                        },
-                        under_cursor = false,
-                    })
-                end,
+                "folke/trouble.nvim",
+                event = "BufRead",
+                lazy = true,
             },
-
             {
                 "hrsh7th/nvim-cmp",
                 config = function()
@@ -301,7 +320,7 @@ local plugs = {
     { "ollykel/v-vim" },
     { "alaviss/nim.nvim" },
     { "vim-crystal/vim-crystal" },
-    { "mfussenegger/nvim-jdtls", ft = "java" },
+    { "mfussenegger/nvim-jdtls",                ft = "java" },
 }
 
 require("lazy").setup(plugs, {
@@ -318,5 +337,3 @@ for _, opts in ipairs(config_options) do
         error(("Error loading %s..\n\n%s"):format(mod, err))
     end
 end
-
-vim.cmd("colorscheme tokyonight")

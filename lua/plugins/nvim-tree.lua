@@ -64,7 +64,7 @@ nvim_tree.setup({
     timeout = 200,
   },
   view = {
-    side = "left",
+    side = "right",
     number = false,
     relativenumber = false,
     signcolumn = "yes",

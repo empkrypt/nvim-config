@@ -1,5 +1,5 @@
 local tk = require("tokyonight")
-
+local tk_util = require("tokyonight.util")
 
 tk.setup({
     style = "night",
@@ -44,10 +44,18 @@ tk.setup({
             fg = c.bg_dark,
         }
         ---
-        hl.DiagnosticLineError = { bg = "#2d202a" }
-        hl.DiagnosticLineWarn = { bg = "#2e2a2d" }
-        hl.DiagnosticLineInfo = { bg = "#192b38" }
-        hl.DiagnosticLineHint = { bg = "#1a2b32" }
+        hl.CursorLine = { bg = "#000000"}
+        --
+        hl["@keyword"] = { fg = c.orange }
+        hl["@keyword.function"] = { fg = tk_util.darken(c.red, 0.8) }
+        hl["@keyword.return"] = { fg = tk_util.darken(c.red, 0.8) }
+        hl["@conditional"] = { fg = tk_util.darken(c.red, 0.8) }
+        hl["@repeat"] = { fg = tk_util.darken(c.red, 0.8) }
+        hl["@exception"] = { fg = tk_util.darken(c.red, 0.8)}
+        -- hl.DiagnosticLineError = { bg = "#2d202a" }
+        -- hl.DiagnosticLineWarn = { bg = "#2e2a2d" }
+        -- hl.DiagnosticLineInfo = { bg = "#192b38" }
+        -- hl.DiagnosticLineHint = { bg = "#1a2b32" }
     end,
 
 })

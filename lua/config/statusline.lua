@@ -54,7 +54,7 @@ local lsp_info = function(msg)
     if f ~= nil then vim.list_extend(buf_client_names, f) end
     if linter ~= nil then vim.list_extend(buf_client_names, linter) end
 
-    return "" .. table.concat(buf_client_names, ", ") .. ""
+    return "LSP[" .. table.concat(buf_client_names, ", ") .. "]"
     -- return "LSP ON"
 end
 
@@ -80,59 +80,59 @@ local colors = {
     green = "#81bc76",
     purple = "#b04fbf",
     orange = "#c05e48",
-    orange2 = "#a84b1f",
+    orange2 = "#E64A19",
     transparent = "NONE",
     fg = "#bfbfbf",
 }
 
 local theme = {
     normal = {
-        a = { fg = colors.black, bg = colors.red },
-        b = { fg = colors.white, bg = colors.transparent },
-        c = { fg = colors.white, bg = colors.transparent },
-        x = { fg = colors.white, bg = colors.transparent },
-        y = { fg = colors.white, bg = colors.transparent },
-        z = { fg = colors.white, bg = colors.transparent },
+        a = { fg = colors.white, bg = colors.black },
+        b = { fg = colors.fg, bg = colors.grey },
+        c = { fg = colors.fg, bg = colors.grey },
+        x = { fg = colors.fg, bg = colors.grey },
+        y = { fg = colors.fg, bg = colors.grey },
+        z = { fg = colors.fg, bg = colors.grey },
     },
     insert = {
         a = { fg = colors.black, bg = colors.green },
-        b = { fg = colors.fg, bg = colors.transparent },
-        c = { fg = colors.fg, bg = colors.transparent },
-        x = { fg = colors.fg, bg = colors.transparent },
-        y = { fg = colors.fg, bg = colors.transparent },
-        z = { fg = colors.fg, bg = colors.transparent },
+        b = { fg = colors.fg, bg = colors.grey },
+        c = { fg = colors.fg, bg = colors.grey },
+        x = { fg = colors.fg, bg = colors.grey },
+        y = { fg = colors.fg, bg = colors.grey },
+        z = { fg = colors.fg, bg = colors.grey },
     },
     visual = {
         a = { fg = colors.black, bg = colors.blue },
-        b = { fg = colors.fg, bg = colors.transparent },
-        c = { fg = colors.fg, bg = colors.transparent },
-        x = { fg = colors.fg, bg = colors.transparent },
-        y = { fg = colors.fg, bg = colors.transparent },
-        z = { fg = colors.fg, bg = colors.transparent },
+        b = { fg = colors.fg, bg = colors.grey },
+        c = { fg = colors.fg, bg = colors.grey },
+        x = { fg = colors.fg, bg = colors.grey },
+        y = { fg = colors.fg, bg = colors.grey },
+        z = { fg = colors.fg, bg = colors.grey },
     },
     command = {
         a = { fg = colors.white, bg = colors.black },
-        b = { fg = colors.fg, bg = colors.transparent },
-        c = { fg = colors.fg, bg = colors.transparent },
-        x = { fg = colors.fg, bg = colors.transparent },
-        y = { fg = colors.fg, bg = colors.transparent },
-        z = { fg = colors.fg, bg = colors.transparent },
+        b = { fg = colors.fg, bg = colors.grey },
+        c = { fg = colors.fg, bg = colors.grey },
+        x = { fg = colors.fg, bg = colors.grey },
+        y = { fg = colors.fg, bg = colors.grey },
+        z = { fg = colors.fg, bg = colors.grey },
     },
     terminal = {
-        a = { fg = colors.white, bg = colors.transparent },
-        b = { fg = colors.fg, bg = colors.transparent },
-        c = { fg = colors.fg, bg = colors.transparent },
-        x = { fg = colors.fg, bg = colors.transparent },
-        y = { fg = colors.fg, bg = colors.transparent },
-        z = { fg = colors.fg, bg = colors.transparent },
+        a = { fg = colors.white, bg = colors.black },
+        b = { fg = colors.fg, bg = colors.grey },
+        c = { fg = colors.fg, bg = colors.grey },
+        x = { fg = colors.fg, bg = colors.grey },
+        y = { fg = colors.fg, bg = colors.grey },
+        z = { fg = colors.fg, bg = colors.grey },
     },
     inactive = {
-        a = { fg = colors.white, bg = colors.transparent },
-        b = { fg = colors.fg, bg = colors.transparent },
-        c = { fg = colors.fg, bg = colors.transparent },
-        x = { fg = colors.fg, bg = colors.transparent },
-        y = { fg = colors.fg, bg = colors.transparent },
-        z = { fg = colors.fg, bg = colors.transparent },
+        a = { fg = colors.white, bg = colors.black },
+        b = { fg = colors.fg, bg = colors.grey },
+        c = { fg = colors.fg, bg = colors.grey },
+        x = { fg = colors.fg, bg = colors.grey },
+        y = { fg = colors.fg, bg = colors.grey },
+        z = { fg = colors.fg, bg = colors.grey },
     },
 }
 
@@ -140,20 +140,20 @@ local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn", "info" },
-    symbols = { error = " ", warn = " ", info = " " },
+    symbols = { error = " ", warn = " ", info = " " },
     colored = true,
     update_in_insert = false,
     always_visible = true,
     separator = { left = "", right = "" },
-    color = { bold = true },
+    -- color = { fg = colors.fg, bg = colors.grey },
 }
 
 local diff = {
     "diff",
-    symbols = { added = "+", modified = "~", removed = "x" }, -- changes diff symbols
+    symbols = { added = "+", modified = "~", removed = "x" },
     colored = true,
     separator = { left = "", right = "" },
-    color = { bold = true },
+    -- color = { fg = colors. },
 }
 
 local filetype = {
@@ -163,8 +163,8 @@ local filetype = {
     icon = nil,
     colored = true,
     padding = 0,
-    separator = { left = " ", right = "" },
-    -- color = { bg = colors.transparent },
+    separator = { left = " ", right = " " },
+    color = { bg = colors.grey },
 }
 
 local filename = {
@@ -173,7 +173,7 @@ local filename = {
     icons_enabled = false,
     separator = { left = "", right = "" },
     padding = 1,
-    color = { italic = true },
+    color = { fg = colors.white },
 }
 
 local branch = {
@@ -194,19 +194,19 @@ local mode = {
 local location = {
     "location",
     separator = { left = "", right = "" },
-    color = { bold = true },
+    color = { fg = colors.fg },
 }
 
 local lsp_info = {
     lsp_info,
     cond = hide_in_width,
     separator = { left = "", right = "" },
-    color = { bold = true },
+    color = { fg = colors.white },
 }
 
 local progress = {
     "progress",
-    color = { bold = true }
+    color = { fg = colors.black, bg = colors.red }
 }
 
 local fileformat = {
@@ -232,29 +232,6 @@ local separator = {
     function()
         return "%="
     end,
-}
-
-local sep_l = {
-    function()
-        return "["
-    end,
-    padding = 0,
-    color = { fg = colors.red },
-}
-local sep_r = {
-    function()
-        return "]"
-    end,
-    padding = 0,
-    color = { fg = colors.red }
-}
-
-local sep = {
-    function()
-        return "|"
-    end,
-    padding = 0,
-    color = { fg = "#343434" }
 }
 
 lualine.setup({
@@ -288,11 +265,11 @@ lualine.setup({
     },
     sections = {
         lualine_a = { mode },
-        lualine_b = { location, filename, sep_l, branch, diff, sep_r, sep },
-        lualine_c = {},
-        lualine_x = { sep, pyvenv, sep_l, filetype, lsp_info, sep_r, sep_l, diagnostics, sep_r, },
-        lualine_y = { sep_l, tab_size, sep, encoding, fileformat, sep_r, },
-        lualine_z = { progress },
+        lualine_b = { filetype, filename },
+        lualine_c = { branch, diff},
+        lualine_x = { pyvenv, lsp_info, diagnostics },
+        lualine_y = { tab_size, encoding, fileformat },
+        lualine_z = { location, progress },
     },
     inactive_sections = {
         lualine_a = { "filename" },

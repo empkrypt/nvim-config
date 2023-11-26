@@ -7,7 +7,7 @@ saga.setup({
         border = "single",
         winblend = 0,
         expand = "",
-        collapse = "",
+        collapse =  "",
         code_action = "",
         incoming = " ",
         outgoing = " ",

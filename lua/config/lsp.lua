@@ -9,7 +9,6 @@ if not status_ok then return end
 local servers = {
     "gopls",
     "clangd",
-    "omnisharp",
     "jsonls",
     "marksman",
     "lua_ls",
@@ -20,9 +19,9 @@ local servers = {
     "bashls",
     "taplo",
     "tsserver",
-    "elixirls",
     "zls",
-    "vls",
+    "solargraph",
+    "ruby_ls",
 }
 
 mason.setup({
@@ -81,16 +80,22 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr) lsp_keymaps(bufnr) end
 
-vim.api.nvim_set_hl(0, "DiagnosticLineError", {})
-vim.api.nvim_set_hl(0, "DiagnosticLineWarn", {})
-vim.api.nvim_set_hl(0, "DiagnosticLineHint", {})
-vim.api.nvim_set_hl(0, "DiagnosticLineInfo", {})
-
+-- vim.api.nvim_set_hl(0, "DiagnosticLineError", {})
+-- vim.api.nvim_set_hl(0, "DiagnosticLineWarn", {})
+-- vim.api.nvim_set_hl(0, "DiagnosticLineHint", {})
+-- vim.api.nvim_set_hl(0, "DiagnosticLineInfo", {})
+--
+-- local diag_signs = {
+--     { name = "DiagnosticSignError", text = "", line = "DiagnosticLineError" },
+--     { name = "DiagnosticSignWarn", text = "", line = "DiagnosticLineWarn" },
+--     { name = "DiagnosticSignHint", text = "", line = "DiagnosticLineHint" },
+--     { name = "DiagnosticSignInfo", text = "", line = "DiagnosticLineInfo" },
+-- }
 local diag_signs = {
-    { name = "DiagnosticSignError", text = "", line = "DiagnosticLineError" },
-    { name = "DiagnosticSignWarn", text = "", line = "DiagnosticLineWarn" },
-    { name = "DiagnosticSignHint", text = "", line = "DiagnosticLineHint" },
-    { name = "DiagnosticSignInfo", text = "", line = "DiagnosticLineInfo" },
+    { name = "DiagnosticSignError", text = "", },
+    { name = "DiagnosticSignWarn", text = "", },
+    { name = "DiagnosticSignHint", text = "", },
+    { name = "DiagnosticSignInfo", text = "", },
 }
 
 for _, sign in ipairs(diag_signs) do
