@@ -1,5 +1,4 @@
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 
 require("luasnip/loaders/from_vscode").lazy_load()
@@ -63,20 +62,19 @@ cmp.setup({
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
     }),
     formatting = {
-        format = lspkind.cmp_format({})
-        -- fields = { "menu", "abbr", "kind" },
-        -- format = function(entry, vim_item)
-        --   vim_item.kind = kind_icons[vim_item.kind]
-        --   vim_item.menu = ({
-        --     nvim_lsp = "[LSP]",
-        --     nvim_lua = "[NVIM]",
-        --     luasnip = "(SNIPPET)",
-        --     buffer = "(BUFFER)",
-        --     path = "(PATH)",
-        --     emoji = "",
-        --   })[entry.source.name]
-        --   return vim_item
-        -- end,
+        fields = { "menu", "abbr", "kind" },
+        format = function(entry, vim_item)
+          vim_item.kind = kind_icons[vim_item.kind]
+          vim_item.menu = ({
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[NVIM]",
+            luasnip = "(SNIPPET)",
+            buffer = "(BUFFER)",
+            path = "(PATH)",
+            emoji = "",
+          })[entry.source.name]
+          return vim_item
+        end,
     },
     sources = {
         { name = "nvim_lsp" },

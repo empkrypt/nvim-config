@@ -8,20 +8,16 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugs = {
     { "nvim-lua/plenary.nvim" }, -- Useful lua functions used ny lots of plugins
-    { "nvim-lua/popup.nvim" },
     { "MunifTanjim/nui.nvim" },
     { "kyazdani42/nvim-web-devicons" },
     { "moll/vim-bbye" },
     { "mbbill/undotree" },
-    { "norcalli/nvim-colorizer.lua" },
-    { "onsails/lspkind.nvim", },
     {
         "j-hui/fidget.nvim",
-        tag = "legacy",
-        event = "LspAttach",
-        config = function()
-            require("fidget").setup()
-        end
+        event = "VimEnter",
+        -- config = function()
+        --     require("fidget").setup({ })
+        -- end
     },
     {
         "declancm/cinnamon.nvim",
@@ -29,13 +25,13 @@ local plugs = {
             require("plugins.cinnamon")
         end,
     },
-    {
-        event = "VimEnter",
-        "rcarriga/nvim-notify",
-        config = function()
-            require("plugins.notify")
-        end,
-    },
+    -- {
+    --     "rcarriga/nvim-notify",
+    --     event = "VimEnter",
+    --     config = function()
+    --         require("plugins.notify")
+    --     end,
+    -- },
     {
         "stevearc/dressing.nvim",
         event = "VeryLazy",
@@ -79,19 +75,6 @@ local plugs = {
             require("plugins.nvim-tree")
         end,
     },
-    -- {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     event = "VimEnter",
-    --     config = function ()
-    --         require("plugins.neotree")
-    --     end
-    -- },
-    -- {
-    --     "akinsho/bufferline.nvim",
-    --     config = function()
-    --         require("plugins.bufferline")
-    --     end,
-    -- },
     {
         "romgrk/barbar.nvim",
         config = function()
@@ -123,7 +106,7 @@ local plugs = {
         config = function()
             require("plugins.indentline")
         end,
-        -- enabled = false,
+        enabled = false,
     },
     {
         "goolord/alpha-nvim",
@@ -147,47 +130,14 @@ local plugs = {
         end,
     },
     {
-        "loctvl842/monokai-pro.nvim",
-        -- event = "VimEnter",
-        -- priority = 10000,
-        lazy = false,
-        config = function()
-            require("plugins.monokai")
-        end,
-    },
-    {
         "marko-cerovac/material.nvim",
-        -- event = "VimEnter",
-        -- priority = 10000,
-        config = function()
-            require("plugins.material")
-        end
-    },
-    {
-        "olimorris/onedarkpro.nvim",
-        -- event = "VimEnter",
-        -- priority = 1000,
-        lazy = false,
-        config = function()
-            require("plugins.onedark")
-        end,
     },
     {
         "folke/tokyonight.nvim",
+        lazy = false,
         config = function()
             require("plugins.tokyonight")
         end
-    },
-    {
-
-        "EdenEast/nightfox.nvim",
-        -- event = "VimEnter",
-        -- priority = 10000,
-        lazy = false,
-        config = function()
-            require("plugins.nightfox")
-            -- vim.cmd("colorscheme nightfox")
-        end,
     },
     {
         "stevearc/aerial.nvim",
@@ -208,19 +158,6 @@ local plugs = {
                     require("plugins.null-ls")
                 end
             },
-            -- {
-            --     "RRethy/vim-illuminate",
-            --     event = "BufReadPost",
-            --     config = function()
-            --         require("illuminate").configure({
-            --             providers = {
-            --                 "treesitter",
-            --                 "lsp",
-            --             },
-            --             under_cursor = false,
-            --         })
-            --     end,
-            -- },
             {
                 "folke/trouble.nvim",
                 event = "BufRead",
@@ -244,13 +181,13 @@ local plugs = {
             "rafamadriz/friendly-snippets",
         },
     },
-    {
-        "glepnir/lspsaga.nvim",
-        event = "VimEnter",
-        config = function()
-            require("plugins.lspsaga")
-        end,
-    },
+    -- {
+    --     "glepnir/lspsaga.nvim",
+    --     event = "VimEnter",
+    --     config = function()
+    --         require("plugins.lspsaga")
+    --     end,
+    -- },
     {
         "nvim-telescope/telescope.nvim",
         -- event = "VimEnter",
@@ -309,17 +246,9 @@ local plugs = {
             require("plugins.zen-mode")
         end,
     },
-    {
-        "kevinhwang91/nvim-ufo",
-        config = true,
-        dependencies = {
-            "kevinhwang91/promise-async",
-        },
-    },
     --
     { "ollykel/v-vim" },
     { "alaviss/nim.nvim" },
-    { "vim-crystal/vim-crystal" },
     { "mfussenegger/nvim-jdtls",                ft = "java" },
 }
 

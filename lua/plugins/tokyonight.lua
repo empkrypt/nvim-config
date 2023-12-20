@@ -1,28 +1,29 @@
-local tk = require("tokyonight")
-local tk_util = require("tokyonight.util")
+local tokyo = require("tokyonight")
 
-tk.setup({
+
+tokyo.setup({
     style = "night",
-    light_style = "night",
     transparent = true,
     styles = {
-        comments = { italic = true },
+        comments = { italic = false },
+        strings = {},
         keywords = { italic = false },
-        functions = {},
+        functions = { italic = false },
         variables = {},
+        types = { bold = true },
+        --
         sidebars = "transparent",
         floats = "transparent",
     },
-    on_colors = function(colors) end,
-    on_highlights = function(hl, c)
+    on_highlights = function(hl, cl)
         local prompt = "#2d3149"
         hl.TelescopeNormal = {
-            bg = c.bg_dark,
-            fg = c.fg_dark,
+            bg = cl.bg_dark,
+            fg = cl.fg_dark,
         }
         hl.TelescopeBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
+            bg = cl.bg_dark,
+            fg = cl.bg_dark,
         }
         hl.TelescopePromptNormal = {
             bg = prompt,
@@ -36,26 +37,16 @@ tk.setup({
             fg = prompt,
         }
         hl.TelescopePreviewTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
+            bg = cl.bg_dark,
+            fg = cl.bg_dark,
         }
         hl.TelescopeResultsTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
+            bg = cl.bg_dark,
+            fg = cl.bg_dark,
         }
-        ---
-        hl.CursorLine = { bg = "#000000"}
         --
-        hl["@keyword"] = { fg = c.orange }
-        hl["@keyword.function"] = { fg = tk_util.darken(c.red, 0.8) }
-        hl["@keyword.return"] = { fg = tk_util.darken(c.red, 0.8) }
-        hl["@conditional"] = { fg = tk_util.darken(c.red, 0.8) }
-        hl["@repeat"] = { fg = tk_util.darken(c.red, 0.8) }
-        hl["@exception"] = { fg = tk_util.darken(c.red, 0.8)}
-        -- hl.DiagnosticLineError = { bg = "#2d202a" }
-        -- hl.DiagnosticLineWarn = { bg = "#2e2a2d" }
-        -- hl.DiagnosticLineInfo = { bg = "#192b38" }
-        -- hl.DiagnosticLineHint = { bg = "#1a2b32" }
-    end,
+        hl.CursorLineNr = { fg = "#e06c75", bg = "#000000" }
+        hl.CursorLine = { bg = "#000000" }
+    end
 
 })

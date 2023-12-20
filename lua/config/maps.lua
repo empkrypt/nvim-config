@@ -8,12 +8,9 @@ vim.g.maplocalleader = " " -- <localleader>
 vim.keymap.set({ "n" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set({ "n" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 --
-vim.keymap.set("n", "<space>/", "<cmd>lua require('Comment.api').toggle.linewise.current('line')<cr>",
-    { noremap = true, silent = true })
-vim.keymap.set("v", "<space>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>",
-    { noremap = true, silent = true })
-vim.keymap.set("x", "<space>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
-    { noremap = true, silent = true })
+vim.keymap.set("n", "<space>/", "<cmd>lua require('Comment.api').toggle.linewise.current('line')<cr>", { noremap = true, silent = true })
+vim.keymap.set("v", "<space>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", { noremap = true, silent = true })
+vim.keymap.set("x", "<space>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', { noremap = true, silent = true })
 --
 -- BUFFER
 vim.keymap.set({ "n" }, "<C-s>", "<cmd>w!<cr>", { noremap = true, silent = true }, { desc = "Save!" })
