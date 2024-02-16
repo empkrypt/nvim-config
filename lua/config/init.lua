@@ -5,39 +5,57 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local plugs = {
-    { "nvim-lua/plenary.nvim" }, -- Useful lua functions used ny lots of plugins
-    { "MunifTanjim/nui.nvim" },
+    -- colorschemes
+    {
+        "gambhirsharma/vesper.nvim",
+        priority = 1000,
+        lazy = false,
+        name = "vesper",
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        -- lazy = true,
+        -- priority = 1000,
+        config = function()
+            require("plugins.nightfox")
+        end
+    },
+    {
+        "folke/tokyonight.nvim",
+        -- lazy = true,
+        -- priority = 1000,
+        config = function()
+            require("plugins.tokyonight")
+        end
+    },
     { "kyazdani42/nvim-web-devicons" },
+    --
+    {
+        "romgrk/barbar.nvim",
+        config = function()
+            require("plugins.barbar")
+        end
+    },
     { "moll/vim-bbye" },
+    {
+        "tiagovla/scope.nvim",
+        config = function()
+            require("scope").setup()
+        end,
+    },
+    {
+        "stevearc/dressing.nvim"
+    },
+    --
     { "mbbill/undotree" },
     {
         "j-hui/fidget.nvim",
         event = "VimEnter",
-        -- config = function()
-        --     require("fidget").setup({ })
-        -- end
-    },
-    {
-        "declancm/cinnamon.nvim",
+        lazy = false,
         config = function()
-            require("plugins.cinnamon")
-        end,
-    },
-    -- {
-    --     "rcarriga/nvim-notify",
-    --     event = "VimEnter",
-    --     config = function()
-    --         require("plugins.notify")
-    --     end,
-    -- },
-    {
-        "stevearc/dressing.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("plugins.dressing")
-        end,
+            require("fidget").setup({})
+        end
     },
     {
         "rmagatti/auto-session",
@@ -76,18 +94,6 @@ local plugs = {
         end,
     },
     {
-        "romgrk/barbar.nvim",
-        config = function()
-            require("plugins.barbar")
-        end
-    },
-    {
-        "tiagovla/scope.nvim",
-        config = function()
-            require("scope").setup()
-        end,
-    },
-    {
         "nvim-lualine/lualine.nvim",
         event = "VimEnter",
         config = function()
@@ -114,7 +120,6 @@ local plugs = {
         config = function()
             require("plugins.dashboard")
         end,
-        lazy = false
     },
     {
         "folke/which-key.nvim",
@@ -130,16 +135,6 @@ local plugs = {
         end,
     },
     {
-        "marko-cerovac/material.nvim",
-    },
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        config = function()
-            require("plugins.tokyonight")
-        end
-    },
-    {
         "stevearc/aerial.nvim",
         event = "BufRead",
         config = function()
@@ -149,7 +144,6 @@ local plugs = {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            -- "VonHeikemen/lsp-zero.nvim",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             {
@@ -181,16 +175,9 @@ local plugs = {
             "rafamadriz/friendly-snippets",
         },
     },
-    -- {
-    --     "glepnir/lspsaga.nvim",
-    --     event = "VimEnter",
-    --     config = function()
-    --         require("plugins.lspsaga")
-    --     end,
-    -- },
+    --
     {
         "nvim-telescope/telescope.nvim",
-        -- event = "VimEnter",
         config = function()
             require("plugins.telescope")
         end,
@@ -202,6 +189,7 @@ local plugs = {
         lazy = false,
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    --
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
@@ -212,7 +200,6 @@ local plugs = {
             "p00f/nvim-ts-rainbow",
             "nvim-treesitter/playground",
         },
-        lazy = true,
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -220,18 +207,12 @@ local plugs = {
         config = function()
             require("plugins.gitsigns")
         end,
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        config = function()
-            require("plugins.dap")
-        end,
         dependencies = {
-            "mfussenegger/nvim-dap",
-            "jay-babu/mason-nvim-dap.nvim",
-            "ravenxrz/DAPInstall.nvim",
-        },
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+        }
     },
+    --
     {
         "iamcco/markdown-preview.nvim",
         build = function()
@@ -247,9 +228,10 @@ local plugs = {
         end,
     },
     --
-    { "ollykel/v-vim" },
-    { "alaviss/nim.nvim" },
-    { "mfussenegger/nvim-jdtls",                ft = "java" },
+    {
+        "simrat39/rust-tools.nvim",
+        ft = "rust",
+    },
 }
 
 require("lazy").setup(plugs, {
@@ -260,6 +242,7 @@ require("lazy").setup(plugs, {
 })
 
 local config_options = { "config.autocmds", "config.options", "config.maps", "config.lsp" }
+
 for _, opts in ipairs(config_options) do
     local ok, err = pcall(require, opts)
     if not ok then

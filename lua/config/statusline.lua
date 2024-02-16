@@ -54,7 +54,7 @@ local lsp_info = function(msg)
     if f ~= nil then vim.list_extend(buf_client_names, f) end
     if linter ~= nil then vim.list_extend(buf_client_names, linter) end
 
-    return "LSP[" .. table.concat(buf_client_names, ", ") .. "]"
+    return "[" .. table.concat(buf_client_names, ", ") .. "]"
     -- return "LSP ON"
 end
 
@@ -87,7 +87,7 @@ local colors = {
 
 local theme = {
     normal = {
-        a = { fg = colors.white, bg = colors.black },
+        a = { fg = colors.black, bg = colors.red },
         b = { fg = colors.fg, bg = colors.grey },
         c = { fg = colors.fg, bg = colors.grey },
         x = { fg = colors.fg, bg = colors.grey },
@@ -144,7 +144,7 @@ local diagnostics = {
     colored = true,
     update_in_insert = false,
     always_visible = true,
-    separator = { left = "", right = "" },
+    -- separator = { left = "", right = "" },
     -- color = { fg = colors.fg, bg = colors.grey },
 }
 
@@ -152,18 +152,18 @@ local diff = {
     "diff",
     symbols = { added = "+", modified = "~", removed = "x" },
     colored = true,
-    separator = { left = "", right = "" },
+    -- separator = { left = "", right = "" },
     -- color = { fg = colors. },
 }
 
 local filetype = {
     "filetype",
     icons_enabled = true,
-    icon_only = true,
+    icon_only = false,
     icon = nil,
     colored = true,
-    padding = 0,
-    separator = { left = " ", right = " " },
+    padding = 1,
+    -- separator = { left = "", right = "" },
     color = { bg = colors.grey },
 }
 
@@ -171,7 +171,7 @@ local filename = {
     "filename",
     path = 0,
     icons_enabled = false,
-    separator = { left = "", right = "" },
+    -- separator = { left = "", right = "" },
     padding = 1,
     color = { fg = colors.white },
 }
@@ -180,20 +180,20 @@ local branch = {
     "branch",
     icons_enabled = true,
     colored = true,
-    separator = { left = '', right = '' },
+    -- separator = { left = '', right = '' },
     color = { fg = colors.blue },
 }
 
 local mode = {
     "mode",
     colored = true,
-    separator = { left = "", right = " " },
+    -- separator = { left = "", right = " " },
     color = { bold = true },
 }
 
 local location = {
     "location",
-    separator = { left = "", right = "" },
+    -- separator = { left = "", right = "" },
     color = { fg = colors.fg },
 }
 
@@ -265,9 +265,9 @@ lualine.setup({
     },
     sections = {
         lualine_a = { mode },
-        lualine_b = { filetype, filename },
-        lualine_c = { branch, diff},
-        lualine_x = { pyvenv, lsp_info, diagnostics },
+        lualine_b = { },
+        lualine_c = { branch, diff, separator, filename },
+        lualine_x = { pyvenv, filetype, diagnostics, lsp_info },
         lualine_y = { tab_size, encoding, fileformat },
         lualine_z = { location, progress },
     },
